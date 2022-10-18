@@ -33,10 +33,17 @@ export PATH="$XDG_DATA_HOME/npm/bin:${PATH}"
 export PATH="$XDG_BIN_HOME:${PATH}"
 
 ##
+# Prompt
+#
+
+PROMPT="%B%F{green}%n@%m%f%b:%B%F{blue}%1~%f%b%# "
+
+##
 # Aliases
 #
 
-alias ls='ls -alhG'
+alias ls='ls -alhG --color=auto'
+
 
 alias vi='nvim'
 alias vim='nvim'
@@ -45,6 +52,17 @@ alias cdcg='cd ~/code/github'
 alias cdcn='cd ~/code/github/nelgau'
 
 alias sm='ssh maxwell'
+
+##
+# Colors
+#
+
+alias dir='dir --color=auto'
+alias vdir='vdir --color=auto'
+
+alias grep='grep --color=auto'
+alias fgrep='fgrep --color=auto'
+alias egrep='egrep --color=auto'
 
 ##
 # Convenience functions
