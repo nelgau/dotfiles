@@ -26,14 +26,6 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared"
 alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
 
 ##
-# Perl
-#
-
-# From Homebrew: By default non-brewed cpan modules are installed to the Cellar. If
-# you wish for your modules to persist across updates we recommend using `local::lib`.
-eval "$(perl -I$XDG_DATA_HOME/perl5/lib/perl5 -Mlocal::lib=$XDG_DATA_HOME/perl5)"
-
-##
 # Path configuration
 #
 
