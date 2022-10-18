@@ -1,3 +1,108 @@
-#!/bin/bash
-/Applications/gtkwave.app/Contents/Resources/bin/gtkwave "$@" &>/dev/null &
+#!/usr/bin/env python3
+# This script was ported from the GTKWave OS X bundle launcher script.
+# The dependency on Perl and a CPAN module drove me crazy.
 
+import os
+import sys
+import argparse
+import subprocess
+
+
+LONG_OPTS = [
+    [   "dump",         1, 0, "f"   ],
+    [   "fastload",     0, 0, "F"   ],
+    [   "optimize",     0, 0, "o"   ],
+    [   "nocli",        1, 0, "n"   ],
+    [   "save",         1, 0, "a"   ],
+    [   "autosavename", 0, 0, "A"   ],
+    [   "rcfile",       1, 0, "r"   ],
+    [   "defaultskip",  0, 0, "d"   ],
+    [   "logfile",      1, 0, "l"   ],
+    [   "start",        1, 0, "s"   ],
+    [   "end",          1, 0, "e"   ],
+    [   "cpus",         1, 0, "c"   ],
+    [   "stems",        1, 0, "t"   ],
+    [   "nowm",         0, 0, "N"   ],
+    [   "script",       1, 0, "S"   ],
+    [   "vcd",          0, 0, "v"   ],
+    [   "version",      0, 0, "V"   ],
+    [   "help",         0, 0, "h"   ],
+    [   "exit",         0, 0, "x"   ],
+    [   "xid",          1, 0, "X"   ],
+    [   "nomenus",      0, 0, "M"   ],
+    [   "dualid",       1, 0, "D"   ],
+    [   "interactive",  0, 0, "I"   ],
+    [   "giga",         0, 0, "g"   ],
+    [   "comphier",     0, 0, "C"   ],
+    [   "legacy",       0, 0, "L"   ],
+    [   "tcl_init",     1, 0, "T"   ],
+    [   "wish",         0, 0, "W"   ],
+    [   "repscript",    1, 0, "R"   ],
+    [   "repperiod",    1, 0, "P"   ],
+    [   "output",       1, 0, "O"   ],
+    [   "slider-zoom",  0, 0, "z"   ],
+    [   "rpc",          1, 0, "1"   ],
+    [   "chdir",        1, 0, "2"   ],
+]
+
+NON_FLAG_NAMES = [
+    "--dump",
+    "--save",
+    "--rcfile",
+]
+
+
+def main():
+    args, rest = parse_args()
+
+    non_flags = []
+    flags = []
+
+    for i, arg in enumerate(rest):
+        if i < len(NON_FLAG_NAMES):
+            non_flags.append(NON_FLAG_NAMES[i])
+        non_flags.append(arg)
+
+    for k, v in args.items():
+        if v is not None:
+            flags.append(f"--{k}")
+            if isinstance(v, list):
+                flags += v
+
+    os.environ['GTKWAVE_CHDIR'] = os.getcwd()
+
+    prefix = [
+        'open',
+        '-n',
+        # '-W',
+        '-a',
+        'gtkwave',
+        '--args',
+        '--chdir',
+        'dummy'
+    ]
+
+    cmd = [*prefix, *non_flags, *flags]
+    subprocess.run(cmd)
+
+def parse_args():
+    parser = argparse.ArgumentParser(add_help=False)
+    parser.add_argument('rest', type=str, nargs='*')
+
+    for long_name, nargs, _, short_name in LONG_OPTS:
+        flags = [f"--{long_name}", f"-{short_name}"]
+        if nargs > 0:
+            parser.add_argument(*flags, dest=long_name, nargs=nargs, type=str)
+        else:
+            parser.add_argument(*flags, dest=long_name, action='store_true', default=None)
+
+    args = parser.parse_args(sys.argv[1:])
+    args = vars(args)
+
+    rest = args['rest']
+    del args['rest']
+
+    return args, rest
+
+if __name__ == "__main__":
+    main()
