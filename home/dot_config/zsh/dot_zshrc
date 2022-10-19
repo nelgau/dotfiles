@@ -33,6 +33,12 @@ export PATH="$XDG_DATA_HOME/npm/bin:${PATH}"
 export PATH="$XDG_BIN_HOME:${PATH}"
 
 ##
+# Editor
+#
+
+export EDITOR='nvim'
+
+##
 # Prompt
 #
 
