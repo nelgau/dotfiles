@@ -1,0 +1,9 @@
+{{- if eq .chezmoi.os "darwin" }}
+Host *
+  AddKeysToAgent yes
+  UseKeychain yes
+  IgnoreUnknown UseKeychain
+{{- end }}
+
+Host github.com
+  User git
