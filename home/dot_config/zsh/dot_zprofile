@@ -4,12 +4,11 @@ export SHELL_SESSION_FILE=$SHELL_SESSION_DIR/$TERM_SESSION_ID
 
 # Homebrew environment
 eval "$(/opt/homebrew/bin/brew shellenv)"
-# Disable noisy hints
-export HOMEBREW_NO_ENV_HINTS=1
+FPATH="${HOMEBREW_PREFIX}/share/zsh/site-functions:${FPATH}"
 
-# Optional path additions from Homebrew
-export PATH="$(brew --prefix)/opt/coreutils/libexec/gnubin:$PATH"
-export PATH="$(brew --prefix)/opt/findutils/libexec/gnubin:$PATH"
+# Use the installed binaries rather than the system versions
+export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
+export PATH="${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${PATH}"
 
 # Pyenv environment
 export PYENV_VIRTUALENV_DISABLE_PROMPT=1

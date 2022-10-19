@@ -1,14 +1,6 @@
 # zsh
 HISTFILE=$XDG_STATE_HOME/zsh/history
 
-# Homebrew completions
-# Note: If I switch to Oh My Zsh, I'll need to move FPATH to ~/.zprofile and
-# allow Oh My Zsh to handle calling compinit for me. See the homebrew docs.
-if type brew &>/dev/null
-then
-  FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
-fi
-
 ##
 # Pyenv
 #
