@@ -1,6 +1,5 @@
 {{- if (eq .chezmoi.os "darwin") -}}
 #!/bin/bash
-
 set -eufo pipefail
 
 {{ $taps := list
@@ -9,18 +8,40 @@ set -eufo pipefail
      "riscv-software-src/riscv" -}}
 {{ $brews := list
      "bat"
-     "curl"
      "cmake"
      "coreutils"
+     "curl"
      "dockutil"
      "ffmpeg"
+     "findutils"
      "gh"
      "git"
+     "htop"
+     "icarus-verilog"
      "jq"
+     "lsusb"
+     "libusb"
+     "libftdi"
+     "moreutils"
+     "ninja"
+     "neofetch"
+     "neovim"
      "node"
+     "pipenv"
+     "poetry"
+     "pyenv"
+     "pyenv-virtualenv"
+     "python"
+     "pyright"
      "tmux"
      "wget"
-     "yt-dlp" -}}
+     "yt-dlp"
+     "zsh" -}}
+{{ $heads := list
+     "nelgau/fpga/ecpprog"
+     "nelgau/fpga/nextpnr-ecp5"
+     "riscv-software-src/riscv/riscv-tools"
+     "yosys" -}}
 {{ $casks := list
      "1password-cli"
      "audacity"
@@ -54,6 +75,9 @@ tap "{{ . }}"
 {{ end -}}
 {{ range ($brews | sortAlpha | uniq) -}}
 brew "{{ . }}"
+{{ end -}}
+{{ range ($heads | sortAlpha | uniq) -}}
+brew "{{ . }}", args: ["HEAD"]
 {{ end -}}
 {{ range ($casks | sortAlpha | uniq) -}}
 cask "{{ . }}"
