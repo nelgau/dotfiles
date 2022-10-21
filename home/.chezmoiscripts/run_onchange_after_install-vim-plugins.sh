@@ -7,11 +7,10 @@ commands=(
     PlugUpdate
 )
 for cmd in ${commands[@]}; do
-    echo "nvim: $cmd"
-
     result=$(nvim --headless +"$cmd" +qa 2>&1)
 
     if [[ $result == *"Error"* ]]; then
+        echo "nvim: $cmd"
         echo "$result"
         exit 1
     fi
