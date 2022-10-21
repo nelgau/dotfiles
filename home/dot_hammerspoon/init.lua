@@ -14,6 +14,7 @@ end
 local bindings = {
   [{'alt', 'cmd', 'ctrl', 'shift'}] = {
     c = launchOrFocus('Google Chrome'),
+    e = launchOrFocus('Evernote'),
     f = launchOrFocus('Finder'),
     i = launchOrFocus('Visual Studio Code'),
     o = launchOrFocus('Sublime Text'),
