@@ -10,3 +10,4 @@ FPATH="${HOMEBREW_PREFIX}/share/zsh/site-functions:${FPATH}"
 # Use the installed binaries rather than the system versions
 export PATH="${HOMEBREW_PREFIX}/opt/coreutils/libexec/gnubin:${PATH}"
 export PATH="${HOMEBREW_PREFIX}/opt/findutils/libexec/gnubin:${PATH}"
+export PATH="${HOMEBREW_PREFIX}/opt/make/libexec/gnubin:${PATH}"
