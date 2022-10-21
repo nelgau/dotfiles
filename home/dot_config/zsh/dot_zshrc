@@ -53,8 +53,10 @@ source $ZSH/oh-my-zsh.sh
 #
 
 export EDITOR='nvim'
-export MAKEFLAGS="-j $(sysctl -n hw.ncpu)"
 export LESSOPEN="|$HOMEBREW_PREFIX/bin/lesspipe.sh %s"
+
+export MAKEFLAGS="-j $(sysctl -n hw.ncpu)"
+export CMAKE_GENERATOR=Ninja
 
 ##
 # Color
