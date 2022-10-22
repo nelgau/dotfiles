@@ -4,6 +4,18 @@ hs.window.animationDuration = 0 -- disable animations
 -- iTerm
 --
 
+function iTermOpenDefaultTerminal()
+  if hs.application.find("iTerm") then
+    hs.applescript.applescript([[
+      tell application "iTerm"
+          create window with default profile
+      end tell
+    ]])
+  else
+    hs.application.open("iTerm")
+  end
+end
+
 function iTermHideHotkeyWindow()
   if hs.application.find("iTerm") then
     hs.applescript.applescript([[
@@ -34,6 +46,7 @@ local bindings = {
     f = launchOrFocus('Finder'),
     i = launchOrFocus('Visual Studio Code'),
     o = launchOrFocus('Sublime Text'),
+    t = iTermOpenDefaultTerminal,
     y = launchOrFocus('System Preferences'),
   },
 }
