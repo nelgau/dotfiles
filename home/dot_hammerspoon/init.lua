@@ -1,12 +1,28 @@
 hs.window.animationDuration = 0 -- disable animations
 
 --
+-- iTerm
+--
+
+function iTermHideHotkeyWindow()
+  if hs.application.find("iTerm") then
+    hs.applescript.applescript([[
+      tell application "iTerm"
+          tell current window
+              hide hotkey window
+          end tell
+      end tell
+    ]])
+  end
+end
+
+--
 -- Key bindings
 --
 
 function launchOrFocus(app)
   return function()
-    -- FIXME: If the iTerm hotkey window is open, close it.
+    iTermHideHotkeyWindow()
     hs.application.launchOrFocus(app)
   end
 end
