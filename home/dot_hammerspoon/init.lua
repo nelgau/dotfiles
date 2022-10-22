@@ -1,8 +1,21 @@
 hs.window.animationDuration = 0 -- disable animations
 
 --
--- iTerm
+-- Applications
 --
+
+function chromeOpenLocation(url)
+  return function()
+    launchOrFocus("Google Chrome")()
+    if hs.application.find("Google Chrome") then
+      hs.applescript.applescript(string.format([[
+        tell application "Google Chrome"
+            open location "%s"
+        end tell
+      ]], url))
+    end
+  end
+end
 
 function iTermOpenDefaultTerminal()
   if hs.application.find("iTerm") then
@@ -44,6 +57,7 @@ local bindings = {
     c = launchOrFocus('Google Chrome'),
     e = launchOrFocus('Evernote'),
     f = launchOrFocus('Finder'),
+    g = chromeOpenLocation("https://www.github.com/nelgau"),
     i = launchOrFocus('Visual Studio Code'),
     o = launchOrFocus('Sublime Text'),
     t = iTermOpenDefaultTerminal,
