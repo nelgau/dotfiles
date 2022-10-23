@@ -1,0 +1,13 @@
+{{ if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+set -eufo pipefail
+
+# Close any open System Preferences panes, to prevent them from overriding
+# settings we’re about to change
+osascript -e 'tell application "System Preferences" to quit'
+
+# Set a blazingly fast keyboard repeat rate
+defaults write NSGlobalDomain InitialKeyRepeat -int 10
+defaults write NSGlobalDomain KeyRepeat -int 1
+
+{{ end -}}
