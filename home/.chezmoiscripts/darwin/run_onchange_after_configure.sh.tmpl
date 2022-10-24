@@ -6,8 +6,51 @@ set -eufo pipefail
 # settings we’re about to change
 osascript -e 'tell application "System Preferences" to quit'
 
+##
+# Input
+##
+
 # Set a blazingly fast keyboard repeat rate
 defaults write NSGlobalDomain InitialKeyRepeat -int 10
 defaults write NSGlobalDomain KeyRepeat -int 1
+
+##
+# Dock
+##
+
+# Set the icon size of Dock items to 48 pixels
+defaults write com.apple.dock tilesize -int 48
+
+# Change minimize/maximize window effect
+defaults write com.apple.dock mineffect -string "scale"
+
+# Minimize windows into their application’s icon
+defaults write com.apple.dock minimize-to-application -bool true
+
+# Don’t animate opening applications from the Dock
+defaults write com.apple.dock launchanim -bool false
+
+# Speed up Mission Control animations
+defaults write com.apple.dock expose-animation-duration -float 0.1
+
+# Automatically hide and show the Dock
+defaults write com.apple.dock autohide -bool true
+
+# TODO: Configure autohide delays
+
+# Don’t show recent applications in Dock
+defaults write com.apple.dock show-recents -bool false
+
+##
+# Kill affected applications
+##
+
+apps=(
+    "Dock"
+)
+
+for app in "${apps[@]}"; do
+	killall "${app}" &> /dev/null
+done
 
 {{ end -}}
