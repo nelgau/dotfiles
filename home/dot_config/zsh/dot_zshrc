@@ -11,15 +11,6 @@ fi
 # Python
 #
 
-# Pyenv environment
-export PYENV_VIRTUALENV_DISABLE_PROMPT=1
-command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
-
-# Avoid collisions between Homebrew and Pyenv environments
-alias brew='env PATH="${PATH//$(pyenv root)\/shims:/}" brew'
-
 # Build python with shared object support
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
@@ -29,6 +20,9 @@ export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
 export PATH="$XDG_DATA_HOME/npm/bin:${PATH}"
 export PATH="$XDG_BIN_HOME:${PATH}"
+
+# Avoid collisions between Homebrew and asdf-installed versions
+alias brew='env PATH="${PATH//.asdf/shims:/}" brew'
 
 ##
 # Oh My Zsh
@@ -41,6 +35,7 @@ DISABLE_AUTO_UPDATE="true"
 plugins=(
   vi-mode
   zsh-syntax-highlighting
+  asdf
 )
 
 source $ZSH/oh-my-zsh.sh
