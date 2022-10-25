@@ -50,6 +50,14 @@ source $ZSH/oh-my-zsh.sh
 export EDITOR='nvim'
 export LESSOPEN="|$HOMEBREW_PREFIX/bin/lesspipe.sh %s"
 
+##
+# Build
+#
+
+# export CFLAGS="-I$HOMEBREW_PREFIX/include"
+# export CPPFLAGS="-I$HOMEBREW_PREFIX/include"
+# export LDFLAGS="-L$HOMEBREW_PREFIX/lib"
+
 export MAKEFLAGS="-j $(sysctl -n hw.ncpu)"
 export CMAKE_GENERATOR=Ninja
 
