@@ -1,0 +1,11 @@
+#!/bin/bash
+set -eufo pipefail
+
+if ! sudo -v ; then
+    echo "Superuser privileges are required to flush the DNS cache"
+    exit 1
+fi
+
+sudo killall -q -HUP mDNSResponder || true
+sudo killall -q mDNSResponderHelper || true
+dscacheutil -flushcache
