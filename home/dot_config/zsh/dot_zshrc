@@ -78,4 +78,6 @@ alias egrep='egrep --color=auto'
 
 alias cdcg='cd ~/code/github'
 alias cdcn='cd ~/code/github/nelgau'
+
+alias sk='ssh kelvin'
 alias sm='ssh maxwell'
