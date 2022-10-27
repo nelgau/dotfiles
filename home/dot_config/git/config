@@ -3,6 +3,8 @@
 	email = nelson.gauthier@gmail.com
 [init]
 	defaultBranch = main
+[push]
+    default = current
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
