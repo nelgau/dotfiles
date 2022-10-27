@@ -6,6 +6,7 @@ set softtabstop=4   " number of spaces in tab when editing
 set shiftwidth=4    " number of spaces to use for autoindent
 set expandtab       " tabs are space
 
+set nowrap
 set mouse=a
 
 call plug#begin()
