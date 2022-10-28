@@ -1,10 +1,29 @@
 [user]
 	name = Nelson Gauthier
 	email = nelson.gauthier@gmail.com
+[alias]
+	a = add
+	ap = add -p
+	b = branch
+	bd = branch --delete
+	c = commit
+	ca = commit --amend
+	cf = commit --fixup
+	co = checkout
+	cob = checkout -b
+	d = diff
+	fo = fetch origin
+	p = push
+	prb = pull --rebase
+	ra = rebase --abort
+	rc = rebase --continue
+	ri = rebase --interactive
+	s = status
+	su = submodule update
 [init]
 	defaultBranch = main
 [push]
-    default = current
+	default = current
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
