@@ -26,4 +26,4 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 
 let NERDTreeShowHidden=1
 
-silent colorscheme jellybeans
+silent! colorscheme jellybeans
