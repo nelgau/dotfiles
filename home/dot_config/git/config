@@ -1,6 +1,8 @@
 [user]
 	name = Nelson Gauthier
 	email = nelson.gauthier@gmail.com
+[advice]
+	addEmptyPathspec = false
 [alias]
 	a = add
 	ap = add -p
