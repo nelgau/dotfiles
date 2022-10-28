@@ -1,0 +1,19 @@
+#!/bin/bash
+set -eufo pipefail
+
+dirs=(
+    # XDG directories
+    $HOME/.local/bin
+    $HOME/.local/lib
+    $HOME/.local/share
+    $HOME/.local/state
+    $HOME/.cache
+    $HOME/.config
+
+    # zsh
+    $HOME/.local/state/zsh
+)
+
+for i in ${dirs[@]}; do
+    mkdir -p $i
+done
