@@ -76,9 +76,20 @@ alias egrep='egrep --color=auto'
 # Aliases
 #
 
-alias g='git'
 alias cdcg='cd ~/code/github.com'
 alias cdcn='cd ~/code/github.com/nelgau'
 
 alias sk='ssh kelvin'
 alias sm='ssh maxwell'
+
+##
+# Git One-Word Aliases
+#
+
+alias g='git'
+
+git config --get-regexp ^alias\. \
+    | sed -e s/^alias\.// -e s/\ .\*// \
+    | while read i ; do
+    alias "g$i"="git $i"
+done
