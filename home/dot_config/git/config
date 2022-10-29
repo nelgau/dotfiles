@@ -20,7 +20,7 @@
 	ra = rebase --abort
 	rc = rebase --continue
 	ri = rebase --interactive
-	s = status
+	s = status -sb
 	su = submodule update
 [init]
 	defaultBranch = main
