@@ -11,7 +11,8 @@ set mouse=a
 
 call plug#begin()
 
-Plug 'preservim/nerdtree'
+" Plug 'preservim/nerdtree'
+Plug 'santiagovrancovich/nerdtree', {'branch': 'hotfix-issue-#1321'}
 Plug 'tpope/vim-commentary'
 Plug 'vim-airline/vim-airline'
 Plug 'rafi/awesome-vim-colorschemes'
