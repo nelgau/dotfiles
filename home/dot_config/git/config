@@ -15,7 +15,8 @@
 	cob = checkout -b
 	d = diff
 	fo = fetch origin
-    l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	l = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
+	ol = log --pretty=oneline
 	p = push
 	prb = pull --rebase
 	ra = rebase --abort
