@@ -28,6 +28,6 @@ nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 
-let NERDTreeShowHidden=1
+let NERDTreeShowHidden = 1
 
 let g:airline_powerline_fonts = 1
