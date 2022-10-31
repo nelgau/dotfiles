@@ -53,7 +53,7 @@ function launchOrFocus(app)
 end
 
 local bindings = {
-  [{'alt', 'cmd', 'ctrl', 'shift'}] = {
+  [{'alt', 'cmd', 'ctrl'}] = {
     c = launchOrFocus('Google Chrome'),
     e = launchOrFocus('Evernote'),
     f = launchOrFocus('Finder'),
