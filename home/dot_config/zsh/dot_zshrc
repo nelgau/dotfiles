@@ -87,6 +87,7 @@ alias sm='ssh maxwell'
 #
 
 alias g='git'
+alias ga.='git add .'
 
 # TODO: The target of each alias should be the full command, not the short
 # code defined in git/config. This would make the output of the shell's `alias`
