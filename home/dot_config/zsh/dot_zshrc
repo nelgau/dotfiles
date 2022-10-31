@@ -93,7 +93,7 @@ alias ga.='git add .'
 # code defined in git/config. This would make the output of the shell's `alias`
 # command much more useful.
 git config --get-regexp ^alias\. \
-    | sed -e s/^alias\.// -e s/\ .\*// \
-    | while read i ; do
-    alias "g$i"="git $i"
+    | sed -e s/^alias\.// \
+    | while read -r a cmd ; do
+    alias "g$a"="git $cmd"
 done
