@@ -21,6 +21,7 @@ Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 call plug#end()
 
+set termguicolors
 silent! colorscheme jellybeans
 
 nnoremap <C-f> :NERDTreeFocus<CR>
