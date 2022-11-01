@@ -30,6 +30,8 @@ alias brew='env PATH="${PATH//.asdf/shims:/}" brew'
 
 ZSH="$XDG_DATA_HOME/oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
+
+# Auto updates will cause Oh My Zsh to drift out of sync with chezmoi's state.
 DISABLE_AUTO_UPDATE="true"
 
 plugins=(
