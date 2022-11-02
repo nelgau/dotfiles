@@ -36,3 +36,10 @@ export npm_config_prefix=$XDG_DATA_HOME/npm
 # less
 export LESSKEY=$XDG_CONFIG_HOME/less/lesskey
 export LESSHISTFILE=$XDG_STATE_HOME/less/lesshst
+
+##
+# Terminal
+#
+
+# We need to supply some terminfos missing from MacOS (e.g., tmux-256colors).
+export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo

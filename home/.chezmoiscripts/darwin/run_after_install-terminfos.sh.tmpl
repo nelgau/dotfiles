@@ -1,0 +1,20 @@
+{{ if (eq .chezmoi.os "darwin") -}}
+#!/bin/bash
+# vim: set filetype=sh : let g:is_bash=1 :
+set -eufo pipefail
+
+if ! infocmp -x tmux-256color >/dev/null 2>&1; then
+    echo "The tmux-256color terminfo is missing!"
+
+    tmpdir=$(mktemp -d 2>/dev/null)
+    pushd $tmpdir >/dev/null
+
+    curl -LOs https://invisible-island.net/datafiles/current/terminfo.src.gz \
+        && gunzip terminfo.src.gz
+    tic -xe tmux,tmux-256color -o $HOME/.local/share/terminfo terminfo.src
+
+    popd >/dev/null
+    rm -rf $tmpdir
+fi
+
+{{ end -}}
