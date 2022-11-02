@@ -4,8 +4,6 @@
 set -eufo pipefail
 
 if ! infocmp -x tmux-256color >/dev/null 2>&1; then
-    echo "The tmux-256color terminfo is missing!"
-
     tmpdir=$(mktemp -d 2>/dev/null)
     pushd $tmpdir >/dev/null
 
