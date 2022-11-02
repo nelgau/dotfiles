@@ -19,10 +19,16 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tc50cal/vim-terminal'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
+" Lua port is available -- https://github.com/ellisonleao/gruvbox.nvim
+Plug 'morhetz/gruvbox'
+
 call plug#end()
 
 set termguicolors
-silent! colorscheme jellybeans
+silent! colorscheme gruvbox
+
+set background=dark
+let g:gruvbox_contrast_dark = 'hard'
 
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
