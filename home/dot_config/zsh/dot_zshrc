@@ -31,19 +31,20 @@ alias brew='env PATH="${PATH//.asdf/shims:/}" brew'
 ZSH="$XDG_DATA_HOME/oh-my-zsh"
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Auto updates will cause Oh My Zsh to drift out of sync with chezmoi's state.
-DISABLE_AUTO_UPDATE="true"
-
-# tmux plugin
-ZSH_TMUX_AUTOSTART="true"
-ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
-
 plugins=(
   vi-mode
   zsh-syntax-highlighting
   asdf
   tmux
 )
+
+# tmux plugin
+ZSH_TMUX_AUTOSTART="true"
+ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
+ZSH_TMUX_UNICODE="true"
+
+# Auto updates will cause Oh My Zsh to drift out of sync with chezmoi's state.
+DISABLE_AUTO_UPDATE="true"
 
 source $ZSH/oh-my-zsh.sh
 
