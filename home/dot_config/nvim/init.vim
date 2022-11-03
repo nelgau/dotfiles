@@ -25,10 +25,11 @@ Plug 'morhetz/gruvbox'
 call plug#end()
 
 set termguicolors
-silent! colorscheme gruvbox
-
 set background=dark
-let g:gruvbox_contrast_dark = 'hard'
+
+let g:gruvbox_italic = 1
+"let g:gruvbox_contrast_dark = 'hard'
+silent! colorscheme gruvbox
 
 nnoremap <C-f> :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
