@@ -41,8 +41,7 @@ plugins=(
 ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
 ZSH_TMUX_UNICODE="true"
 # tmux plugin
-if [ -n "$SSH_CONNECTION" ]; then
-    echo "This is an SSH connection!"
+if [ ! -n "$SSH_CONNECTION" ]; then
     ZSH_TMUX_AUTOSTART="true"
 fi
 
