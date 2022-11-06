@@ -97,6 +97,8 @@ alias egrep='egrep --color=auto'
 # Aliases
 #
 
+alias cm='tmux-chezmoi'
+
 alias cdcg='cd ~/code/github.com'
 alias cdcn='cd ~/code/github.com/nelgau'
 
