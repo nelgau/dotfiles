@@ -99,11 +99,20 @@ alias egrep='egrep --color=auto'
 
 alias cm='tmux-chezmoi'
 
-alias cdcg='cd ~/code/github.com'
-alias cdcn='cd ~/code/github.com/nelgau'
-
 alias sk='ssh kelvin'
 alias sm='ssh maxwell'
+
+##
+# Functions
+#
+
+function cdcg() {
+  cd ~/code/github.com/$1
+}
+
+function cdcn() {
+  cd ~/code/github.com/nelgau/$1
+}
 
 ##
 # Git One-Word Aliases
