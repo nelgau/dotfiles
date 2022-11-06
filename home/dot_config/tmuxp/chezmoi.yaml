@@ -1,8 +1,0 @@
-session_name: chezmoi-tmuxp
-start_directory: ~/.local/share/chezmoi
-windows:
-  - window_name: chezmoi
-    layout: even-horizontal
-    panes:
-      - shell: nvim +"NERDTree"
-      - shell: zsh
