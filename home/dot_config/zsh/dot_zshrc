@@ -121,9 +121,9 @@ function cdcn() {
 alias g='git'
 alias ga.='git add .'
 
-# TODO: The target of each alias should be the full command, not the short
-# code defined in git/config. This would make the output of the shell's `alias`
-# command much more useful.
+# One-word git aliases.
+# The target of each alias is the full command. This would makes the output of
+# the shell's `alias` built-in much more useful.
 git config --get-regexp ^alias\. \
     | sed -e s/^alias\.// \
     | while read -r a cmd ; do
