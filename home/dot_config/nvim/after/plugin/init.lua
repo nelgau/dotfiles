@@ -1,1 +1,1 @@
-vim.g.NERDTreeShowHidden = 1
+-- This intentionally left blank!
