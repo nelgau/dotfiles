@@ -2,9 +2,7 @@
 set -eufo pipefail
 
 commands=(
-    PlugUpgrade
-    PlugClean!
-    PlugUpdate
+    PackerSync
 )
 for cmd in ${commands[@]}; do
     result=$(nvim --headless +"$cmd" +qa 2>&1)
