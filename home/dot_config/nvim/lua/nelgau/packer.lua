@@ -7,6 +7,8 @@ return require('packer').startup(function(use)
     use('nvim-treesitter/nvim-treesitter-context')
     use('nvim-treesitter/playground')
 
+    use('gruvbox-community/gruvbox')
+
     -- OG config section
 
     -- use "preservim/nerdtree"
@@ -15,7 +17,4 @@ return require('packer').startup(function(use)
     use 'tpope/vim-commentary'
     use 'tc50cal/vim-terminal'
     use {'neoclide/coc.nvim', branch = 'release'}
-
-    -- Lua port is available: https://github.com/ellisonleao/gruvbox.nvim
-    use 'morhetz/gruvbox'
 end)
