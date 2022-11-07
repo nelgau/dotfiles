@@ -13,7 +13,6 @@ return require('packer').startup(function(use)
     use {'santiagovrancovich/nerdtree', branch = 'hotfix-issue-#1321'}
 
     use 'tpope/vim-commentary'
-    use 'rafi/awesome-vim-colorschemes'
     use 'tc50cal/vim-terminal'
     use {'neoclide/coc.nvim', branch = 'release'}
 
