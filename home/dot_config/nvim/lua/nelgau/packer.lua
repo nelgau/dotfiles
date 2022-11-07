@@ -9,11 +9,6 @@ return require('packer').startup(function(use)
 
     use('gruvbox-community/gruvbox')
 
-    -- OG config section
-
     -- use "preservim/nerdtree"
     use {'santiagovrancovich/nerdtree', branch = 'hotfix-issue-#1321'}
-
-    use 'tpope/vim-commentary'
-    use {'neoclide/coc.nvim', branch = 'release'}
 end)
