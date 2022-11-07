@@ -1,7 +1,13 @@
 return require('packer').startup(function(use)
-    use 'wbthomason/packer.nvim'
+    use('wbthomason/packer.nvim')
 
-    use 'nvim-lualine/lualine.nvim'
+    use('nvim-lualine/lualine.nvim')
+
+    use('nvim-treesitter/nvim-treesitter', {run = ':TSUpdate'})
+    use('nvim-treesitter/nvim-treesitter-context')
+    use('nvim-treesitter/playground')
+
+    -- OG config section
 
     -- use "preservim/nerdtree"
     use {'santiagovrancovich/nerdtree', branch = 'hotfix-issue-#1321'}
