@@ -14,4 +14,4 @@ opt.mouse = "a"
 opt.termguicolors = true
 
 -- Keep the diagnostics gutter open to prevent popping.
-opt.signcolumn = "yes"
+opt.signcolumn = "yes:1"
