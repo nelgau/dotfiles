@@ -96,16 +96,17 @@ function toggleAlacritty()
   local APP_NAME = 'Alacritty'
   local alacritty = hs.application.get(APP_NAME)
 
-  function awaitMainWindow(app)
+  function awaitWindow(app)
     local win = nil
     while win == nil do
-      win = alacritty:mainWindow()
+      win = app:mainWindow()
     end
     return win
   end
 
-  function moveWindow(alacritty, space)
-    local win = awaitMainWindow(alacritty)
+  function presentApp(app)
+    local space = spaces.activeSpaceOnScreen()
+    local win = awaitWindow(app)
 
     winFrame = win:frame()
     scrFrame = screen.mainScreen():frame()
@@ -119,27 +120,24 @@ function toggleAlacritty()
     win:focus()
   end
 
-  if alacritty ~= nil and alacritty:isFrontmost() then
-    alacritty:hide()
+  if alacritty ~= nil then
+    if alacritty:isFrontmost() then
+      alacritty:hide()
+    else
+      presentApp(alacritty)
+    end
   else
-    local space = spaces.activeSpaceOnScreen()
-
-    if alacritty == nil and hs.application.launchOrFocus(APP_NAME) then
+    if hs.application.launchOrFocus(APP_NAME) then
       local appWatcher = nil
 
       appWatcher = hs.application.watcher.new(function(name, event, app)
         if event == hs.application.watcher.launched and name == APP_NAME then
-          app:hide()
-          moveWindow(app, space)
+          presentApp(app)
           appWatcher:stop()
         end
       end)
 
       appWatcher:start()
-    end
-
-    if alacritty ~= nil then
-      moveWindow(alacritty, space)
     end
   end
 end
