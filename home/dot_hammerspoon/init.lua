@@ -96,17 +96,16 @@ function toggleAlacritty()
   local APP_NAME = 'Alacritty'
   local alacritty = hs.application.get(APP_NAME)
 
-  function moveWindow(alacritty, space)
-    -- move to main space
+  function awaitMainWindow(app)
     local win = nil
     while win == nil do
       win = alacritty:mainWindow()
     end
+    return win
+  end
 
-    local fullScreen = not win:isStandard()
-    if fullScreen then
-      hs.eventtap.keyStroke('cmd', 'return', 0, alacritty)
-    end
+  function moveWindow(alacritty, space)
+    local win = awaitMainWindow(alacritty)
 
     winFrame = win:frame()
     scrFrame = screen.mainScreen():frame()
@@ -115,14 +114,8 @@ function toggleAlacritty()
     winFrame.y = scrFrame.y
     winFrame.x = scrFrame.x
 
-    win:setFrame(winFrame, 0)
-
     spaces.moveWindowToSpace(win, space)
-
-    if fullScreen then
-      hs.eventtap.keyStroke('cmd', 'return', 0, alacritty)
-    end
-
+    win:setFrame(winFrame, 0)
     win:focus()
   end
 
