@@ -40,6 +40,7 @@ ZSH_THEME="powerlevel10k/powerlevel10k"
 plugins=(
   vi-mode
   zsh-syntax-highlighting
+  zsh-autosuggestions
   asdf
   tmux
   tmuxinator
