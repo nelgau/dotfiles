@@ -21,6 +21,7 @@
 	ol = log --pretty=oneline
 	p = push
 	prb = pull --rebase
+	r = restore
 	rba = rebase --abort
 	rbc = rebase --continue
 	rbi = rebase --interactive
@@ -28,6 +29,7 @@
 	reh = reset --hard
 	s = status -sb
 	su = submodule update
+	sw = switch
 [init]
 	defaultBranch = main
 [push]
