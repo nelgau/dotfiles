@@ -1,42 +1,7 @@
 local Alacritty = require('nelgau.alacritty')
+local Apps = require('nelgau.apps')
 
 hs.window.animationDuration = 0 -- disable animations
-
---
--- Applications
---
-
-function launchOrFocus(app)
-  return function()
-    Alacritty.hide()
-    hs.application.launchOrFocus(app)
-  end
-end
-
-function chromeOpenLocation(url)
-  return function()
-    launchOrFocus("Google Chrome")()
-    if hs.application.find("Google Chrome") then
-      hs.applescript.applescript(string.format([[
-        tell application "Google Chrome"
-            open location "%s"
-        end tell
-      ]], url))
-    end
-  end
-end
-
-function iTermOpenDefaultTerminal()
-  if hs.application.find("iTerm") then
-    hs.applescript.applescript([[
-      tell application "iTerm"
-          create window with default profile
-      end tell
-    ]])
-  else
-    hs.application.open("iTerm")
-  end
-end
 
 --
 -- Key bindings
@@ -47,14 +12,14 @@ local bindings = {
     ['`'] = Alacritty.toggle,
   },
   [{'alt', 'cmd', 'ctrl'}] = {
-    c = launchOrFocus('Google Chrome'),
-    e = launchOrFocus('Evernote'),
-    f = launchOrFocus('Finder'),
-    g = chromeOpenLocation("https://www.github.com/nelgau"),
-    i = launchOrFocus('Visual Studio Code'),
-    o = launchOrFocus('Sublime Text'),
-    t = iTermOpenDefaultTerminal,
-    y = launchOrFocus('System Preferences'),
+    c = Apps.launchOrFocus('Google Chrome'),
+    e = Apps.launchOrFocus('Evernote'),
+    f = Apps.launchOrFocus('Finder'),
+    g = Apps.chromeOpenLocation("https://www.github.com/nelgau"),
+    i = Apps.launchOrFocus('Visual Studio Code'),
+    o = Apps.launchOrFocus('Sublime Text'),
+    t = Apps.iTermOpenDefaultTerminal,
+    y = Apps.launchOrFocus('System Preferences'),
   },
 }
 
@@ -76,4 +41,5 @@ function reloadConfig(files)
   end
 end
 
-hs.pathwatcher.new(os.getenv("HOME") .. "/.hammerspoon/", reloadConfig):start()
+local hsPath = os.getenv("HOME") .. "/.hammerspoon"
+hs.pathwatcher.new(hsPath, reloadConfig):start()
