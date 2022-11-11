@@ -2,6 +2,9 @@
 # Zsh
 #
 
+# 10ms for key sequences
+KEYTIMEOUT=1
+
 HISTFILE=$XDG_STATE_HOME/zsh/history
 
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.config/zsh/.zshrc.
