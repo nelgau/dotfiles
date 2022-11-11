@@ -1,21 +1,18 @@
 local Alacritty = {}
 
-local spaces = require "hs.spaces"
-local screen = require "hs.screen"
-
 local APP_NAME = 'Alacritty'
 
 function awaitWindow(app)
-  local win = nil
-  while win == nil do
-    win = app:mainWindow()
+  local appWindow = nil
+  while appWindow == nil do
+    appWindow = app:mainWindow()
   end
-   return win
+   return appWindow
 end
 
 function presentApp(app)
-  local primaryScreen = screen.primaryScreen()
-  local primarySpace = spaces.activeSpaceOnScreen(primaryScreen)
+  local primaryScreen = hs.screen.primaryScreen()
+  local primarySpace = hs.spaces.activeSpaceOnScreen(primaryScreen)
   local appWindow = awaitWindow(app)
 
   windowFrame = appWindow:frame()
@@ -25,7 +22,7 @@ function presentApp(app)
   windowFrame.y = screenFrame.y
   windowFrame.x = screenFrame.x
 
-  spaces.moveWindowToSpace(appWindow, primarySpace)
+  hs.spaces.moveWindowToSpace(appWindow, primarySpace)
   appWindow:setFrame(windowFrame, 0)
   appWindow:focus()
 end
