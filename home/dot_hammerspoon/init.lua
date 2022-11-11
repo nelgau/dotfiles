@@ -11,10 +11,10 @@ local bindings = {
   [{'cmd'}] = {
     ['`'] = Alacritty.toggleVisibility,
   },
-  [{'alt'}] = {
+  [{'cmd', 'alt'}] = {
     ['`'] = Alacritty.toggleFullscreen,
   },
-  [{'alt', 'cmd', 'ctrl'}] = {
+  [{'cmd', 'alt', 'ctrl'}] = {
     c = Apps.launchOrFocus('Google Chrome'),
     e = Apps.launchOrFocus('Evernote'),
     f = Apps.launchOrFocus('Finder'),
