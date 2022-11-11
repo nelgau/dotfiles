@@ -21,7 +21,7 @@ function awaitWindow(app)
   while appWindow == nil do
     appWindow = app:mainWindow()
   end
-   return appWindow
+  return appWindow
 end
 
 function presentApp(app)

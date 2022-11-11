@@ -1,7 +1,13 @@
 local Alacritty = require('nelgau.alacritty')
 local Apps = require('nelgau.apps')
 
+local HS_PATH = os.getenv("HOME") .. "/.hammerspoon"
+
 hs.window.animationDuration = 0 -- disable animations
+
+ext = {
+  watchers = {},
+}
 
 --
 -- Key bindings
@@ -37,12 +43,15 @@ end
 --
 
 function reloadConfig(files)
-  for _, file in pairs(files) do
-    if file:sub(-4) == '.lua' then
-      hs.reload()
-    end
-  end
+  -- stop watchers to avoid leaks
+  hs.fnutils.each(ext.watchers, function(watcher) watcher:stop() end)
+
+  hs.reload()
+
+  hs.notify.new({
+    title           = 'Hammerspoon',
+    informativeText = 'Configuration reloaded',
+  }):send()
 end
 
-local hsPath = os.getenv("HOME") .. "/.hammerspoon"
-hs.pathwatcher.new(hsPath, reloadConfig):start()
+ext.watchers.pathwatcher = hs.pathwatcher.new(HS_PATH, reloadConfig):start()
