@@ -105,19 +105,20 @@ function toggleAlacritty()
   end
 
   function presentApp(app)
-    local space = spaces.activeSpaceOnScreen()
-    local win = awaitWindow(app)
+    local primaryScreen = screen.primaryScreen()
+    local primarySpace = spaces.activeSpaceOnScreen(primaryScreen)
+    local appWindow = awaitWindow(app)
 
-    winFrame = win:frame()
-    scrFrame = screen.mainScreen():frame()
+    windowFrame = appWindow:frame()
+    screenFrame = primaryScreen:frame()
 
-    winFrame.w = scrFrame.w
-    winFrame.y = scrFrame.y
-    winFrame.x = scrFrame.x
+    windowFrame.w = screenFrame.w
+    windowFrame.y = screenFrame.y
+    windowFrame.x = screenFrame.x
 
-    spaces.moveWindowToSpace(win, space)
-    win:setFrame(winFrame, 0)
-    win:focus()
+    spaces.moveWindowToSpace(appWindow, primarySpace)
+    appWindow:setFrame(windowFrame, 0)
+    appWindow:focus()
   end
 
   if alacritty ~= nil then
