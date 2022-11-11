@@ -26,7 +26,12 @@ function presentApp(app)
   windowFrame = appWindow:frame()
   screenFrame = primaryScreen:frame()
 
-  if shouldFullscreen then
+  local canMinimize = false
+  if screenFrame.w > MINIMIZED_WIDTH and screenFrame.h > MINIMIZED_HEIGHT then
+      canMinimize = true
+  end
+
+  if shouldFullscreen or not canMinimize then
     windowFrame = screenFrame
   else
     windowFrame.w = MINIMIZED_WIDTH
