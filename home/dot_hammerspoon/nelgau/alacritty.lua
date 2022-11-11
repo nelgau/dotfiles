@@ -1,6 +1,10 @@
 local Alacritty = {}
 
 local APP_NAME = 'Alacritty'
+local MINIMIZED_WIDTH = 2400
+local MINIMIZED_HEIGHT = 1200
+
+local shouldFullscreen = true
 
 function findApp()
   return hs.application.get(APP_NAME)
@@ -22,9 +26,14 @@ function presentApp(app)
   windowFrame = appWindow:frame()
   screenFrame = primaryScreen:frame()
 
-  windowFrame.w = screenFrame.w
-  windowFrame.y = screenFrame.y
-  windowFrame.x = screenFrame.x
+  if shouldFullscreen then
+    windowFrame = screenFrame
+  else
+    windowFrame.w = MINIMIZED_WIDTH
+    windowFrame.h = MINIMIZED_HEIGHT
+    windowFrame.x = (screenFrame.w - windowFrame.w) / 2
+    windowFrame.y = 0
+  end
 
   hs.spaces.moveWindowToSpace(appWindow, primarySpace)
   appWindow:setFrame(windowFrame, 0)
@@ -46,7 +55,7 @@ function launchApp()
   end
 end
 
-Alacritty.toggle = function()
+Alacritty.toggleVisibility = function()
   local app = findApp()
 
   if app ~= nil then
@@ -57,6 +66,15 @@ Alacritty.toggle = function()
     end
   else
     launchApp()
+  end
+end
+
+Alacritty.toggleFullscreen = function()
+  local app = findApp()
+
+  if app ~= nil then
+    shouldFullscreen = not shouldFullscreen
+    presentApp(app)
   end
 end
 

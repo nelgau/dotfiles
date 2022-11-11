@@ -9,7 +9,10 @@ hs.window.animationDuration = 0 -- disable animations
 
 local bindings = {
   [{'cmd'}] = {
-    ['`'] = Alacritty.toggle,
+    ['`'] = Alacritty.toggleVisibility,
+  },
+  [{'alt'}] = {
+    ['`'] = Alacritty.toggleFullscreen,
   },
   [{'alt', 'cmd', 'ctrl'}] = {
     c = Apps.launchOrFocus('Google Chrome'),
