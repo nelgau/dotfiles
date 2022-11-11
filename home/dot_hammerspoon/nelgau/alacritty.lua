@@ -2,6 +2,10 @@ local Alacritty = {}
 
 local APP_NAME = 'Alacritty'
 
+function findApp()
+  return hs.application.get(APP_NAME)
+end
+
 function awaitWindow(app)
   local appWindow = nil
   while appWindow == nil do
@@ -43,16 +47,24 @@ function launchApp()
 end
 
 Alacritty.toggle = function()
-  local alacritty = hs.application.get(APP_NAME)
+  local app = findApp()
 
-  if alacritty ~= nil then
-    if alacritty:isFrontmost() then
-      alacritty:hide()
+  if app ~= nil then
+    if app:isFrontmost() then
+      app:hide()
     else
-      presentApp(alacritty)
+      presentApp(app)
     end
   else
     launchApp()
+  end
+end
+
+Alacritty.hide = function()
+  local app = findApp()
+
+  if app ~= nil then
+    app:hide()
   end
 end
 

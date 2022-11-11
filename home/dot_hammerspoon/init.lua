@@ -6,6 +6,13 @@ hs.window.animationDuration = 0 -- disable animations
 -- Applications
 --
 
+function launchOrFocus(app)
+  return function()
+    Alacritty.hide()
+    hs.application.launchOrFocus(app)
+  end
+end
+
 function chromeOpenLocation(url)
   return function()
     launchOrFocus("Google Chrome")()
@@ -31,28 +38,9 @@ function iTermOpenDefaultTerminal()
   end
 end
 
-function iTermHideHotkeyWindow()
-  if hs.application.find("iTerm") then
-    hs.applescript.applescript([[
-      tell application "iTerm"
-          tell current window
-              hide hotkey window
-          end tell
-      end tell
-    ]])
-  end
-end
-
 --
 -- Key bindings
 --
-
-function launchOrFocus(app)
-  return function()
-    iTermHideHotkeyWindow()
-    hs.application.launchOrFocus(app)
-  end
-end
 
 local bindings = {
   [{'cmd'}] = {
