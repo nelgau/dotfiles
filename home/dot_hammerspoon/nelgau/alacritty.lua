@@ -6,6 +6,12 @@ local MINIMIZED_HEIGHT = 1200
 
 local shouldFullscreen = true
 
+function canMinimize()
+  local screenFrame = hs.screen.primaryScreen():frame()
+  return (screenFrame.w > MINIMIZED_WIDTH
+      and screenFrame.h > MINIMIZED_HEIGHT)
+end
+
 function findApp()
   return hs.application.get(APP_NAME)
 end
@@ -23,15 +29,10 @@ function presentApp(app)
   local primarySpace = hs.spaces.activeSpaceOnScreen(primaryScreen)
   local appWindow = awaitWindow(app)
 
-  windowFrame = appWindow:frame()
-  screenFrame = primaryScreen:frame()
+  local windowFrame = appWindow:frame()
+  local screenFrame = primaryScreen:frame()
 
-  local canMinimize = false
-  if screenFrame.w > MINIMIZED_WIDTH and screenFrame.h > MINIMIZED_HEIGHT then
-      canMinimize = true
-  end
-
-  if shouldFullscreen or not canMinimize then
+  if shouldFullscreen then
     windowFrame = screenFrame
   else
     windowFrame.w = MINIMIZED_WIDTH
@@ -75,11 +76,15 @@ Alacritty.toggleVisibility = function()
 end
 
 Alacritty.toggleFullscreen = function()
-  local app = findApp()
+  if canMinimize() then
+    local app = findApp()
 
-  if app ~= nil then
-    shouldFullscreen = not shouldFullscreen
-    presentApp(app)
+    if app ~= nil then
+      if app:isFrontmost() then
+        shouldFullscreen = not shouldFullscreen
+        presentApp(app)
+      end
+    end
   end
 end
 
