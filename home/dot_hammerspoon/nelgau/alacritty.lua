@@ -33,13 +33,15 @@ function presentApp(app)
   local screenFrame = primaryScreen:frame()
 
   if shouldFullscreen then
-    windowFrame = screenFrame
+    windowFrame.w = screenFrame.w
+    windowFrame.h = screenFrame.h
   else
     windowFrame.w = MINIMIZED_WIDTH
     windowFrame.h = MINIMIZED_HEIGHT
-    windowFrame.x = (screenFrame.w - windowFrame.w) / 2
-    windowFrame.y = 0
   end
+
+  windowFrame.x = (screenFrame.w - windowFrame.w) / 2
+  windowFrame.y = 0
 
   hs.spaces.moveWindowToSpace(appWindow, primarySpace)
   appWindow:setFrame(windowFrame, 0)
