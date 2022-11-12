@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+set -eufo pipefail
+
+session=""
+positional_args=()
+
+while [[ $# -gt 0 ]] ; do
+  case $1 in
+    -s|--session)
+      session="$2"
+      shift
+      shift
+      ;;
+    -*|--*)
+      echo "Unknown option $1"
+      exit 1
+      ;;
+    *)
+      positional_args+=("$1")
+      shift
+      ;;
+  esac
+done
+
+if [[ ${#positional_args[@]} -ne 1 ]] ; then
+    echo "Usage: tmux-edit [--session s] directory"
+    exit 0
+fi
+
+start_dir="${positional_args[0]}"
+
+if [[ -z $session ]] ; then
+    session="edit-$(basename $start_dir)"
+fi
+
+if ! tmux has-session -t $session 2> /dev/null ; then
+    tmux new-session -d -s $session -c $start_dir "nvim +'NERDTree'"
+    tmux split-window -t $session:0 -h -c $start_dir
+    tmux rename-window -t $session:0 editor
+fi
+
+tmux select-pane -t $session:0.0
+tmux select-window -t $session:0
+tmux switch-client -t $session

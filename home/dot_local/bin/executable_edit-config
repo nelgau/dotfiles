@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-set -ufo pipefail
+set -eufo pipefail
 
 if [[ $# -eq 1 ]] ; then
     selected_name="$1"
@@ -12,12 +12,4 @@ fi
 session="config-$selected_name"
 start_dir="$selected_path"
 
-if ! tmux has-session -t $session 2> /dev/null ; then
-    tmux new-session -d -s $session -c $start_dir "nvim +'NERDTree'"
-    tmux split-window -t $session:0 -h -c $start_dir
-    tmux rename-window -t $session:0 editor
-fi
-
-tmux select-pane -t $session:0.0
-tmux select-window -t $session:0
-tmux switch-client -t $session
+tmux-edit --session $session $start_dir
