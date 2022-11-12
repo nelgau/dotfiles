@@ -1,21 +1,21 @@
 #!/usr/bin/env bash
 set -eufo pipefail
 
-CONFIG_LINKS="$HOME/.config/configable"
+CONFIG_DIR="$HOME/.config"
 
 if [[ $# -eq 0 ]] ; then
     name=$(
-        find $CONFIG_LINKS -type l -exec basename {} \; |
+        find $CONFIG_DIR -mindepth 1 -maxdepth 1 -type d -exec basename {} \; |
         fzf
     )
 elif [[ $# -eq 1 ]] ; then
     name="$1"
 else
-    echo "Usage: edit-config [name]"
+    echo "Usage: edit-dotconfig [name]"
     exit 1
 fi
 
 session="config-$name"
-start_dir=$(readlink -f "$CONFIG_LINKS/$name")
+start_dir=$(readlink -f "$CONFIG_DIR/$name")
 
 tmux-edit --session $session $start_dir

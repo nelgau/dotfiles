@@ -98,6 +98,8 @@ alias egrep='egrep --color=auto'
 #
 
 alias conf='edit-config'
+alias dotconf='edit-dotconfig'
+
 alias cm='edit-config dotfiles'
 alias cv='edit-config nvim'
 alias ch='edit-config hammerspoon'
