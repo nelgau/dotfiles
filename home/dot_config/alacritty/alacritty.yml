@@ -23,6 +23,9 @@ env:
   # available, otherwise `xterm-256color` is used.
   TERM: xterm-256color
 
+  # Unless some other condition prevents it, allow OhMyZsh to start tmux.
+  CAN_AUTOSTART_TMUX: "true"
+
 window:
   # Window dimensions (changes require restart)
   #

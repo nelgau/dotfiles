@@ -52,7 +52,7 @@ plugins=(
 # tmux plugin
 ZSH_TMUX_CONFIG="$XDG_CONFIG_HOME/tmux/tmux.conf"
 ZSH_TMUX_UNICODE="true"
-if [ ! -n "$SSH_CONNECTION" ]; then
+if [[ -n "$CAN_AUTOSTART_TMUX" ]] && [[ ! -n "$SSH_CONNECTION" ]]; then
     ZSH_TMUX_AUTOSTART="true"
 fi
 
