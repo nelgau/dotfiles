@@ -101,7 +101,7 @@ alias conf='edit-config'
 alias dotconf='edit-dotconfig'
 
 alias cm='edit-config dotfiles'
-alias cv='edit-config nvim'
+alias cv='edit-config neovim'
 alias ch='edit-config hammerspoon'
 
 alias sk='ssh kelvin'
