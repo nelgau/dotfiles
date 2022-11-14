@@ -15,11 +15,14 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 ##
-# Python
+# Languages
 #
 
 # Build python with shared object support
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
+
+# Activate the rust environment
+source "$CARGO_HOME/env"
 
 ##
 # Path
