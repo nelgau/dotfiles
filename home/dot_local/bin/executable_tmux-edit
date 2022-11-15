@@ -35,7 +35,7 @@ fi
 
 if ! tmux has-session -t $session 2> /dev/null ; then
     tmux new-session -d -s $session -c $start_dir "nvim +'NvimTreeOpen'"
-    tmux split-window -t $session:0 -h -c $start_dir
+    # tmux split-window -t $session:0 -h -c $start_dir
     tmux rename-window -t $session:0 editor
 fi
 
