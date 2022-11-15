@@ -40,8 +40,8 @@ alias brew='env PATH="${PATH//.asdf/shims:/}" brew'
 
 ZSH="$XDG_DATA_HOME/oh-my-zsh"
 
-ZSH_THEME="powerlevel10k/powerlevel10k"
-# ZSH_THEME="robbyrussell"
+# ZSH_THEME="powerlevel10k/powerlevel10k"
+ZSH_THEME="robbyrussell"
 
 plugins=(
   vi-mode
