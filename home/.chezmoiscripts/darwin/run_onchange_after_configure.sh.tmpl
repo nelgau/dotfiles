@@ -45,6 +45,14 @@ defaults write com.apple.dock autohide-time-modifier -float 0
 defaults write com.apple.dock show-recents -bool false
 
 ##
+# Google Chrome
+##
+
+# Disable the all too sensitive backswipe on trackpads
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+
+##
 # Misc. Applications
 ##
 
@@ -56,10 +64,12 @@ defaults write org.alacritty AppleFontSmoothing -int 0
 
 apps=(
     "Dock"
+	# "Google Chrome"
+	# "Google Chrome Canary"
 )
 
 for app in "${apps[@]}"; do
-	killall "${app}" &> /dev/null
+	killall "${app}" &> /dev/null || true
 done
 
 {{ end -}}
