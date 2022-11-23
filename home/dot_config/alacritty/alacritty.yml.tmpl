@@ -444,10 +444,17 @@ draw_bold_text_with_bright_colors: false
 # Default:
 #   - (Linux/BSD/macOS) `$SHELL` or the user's login shell, if `$SHELL` is unset
 #   - (Windows) powershell
-#shell:
-#  program: /bin/bash
-#  args:
-#    - --login
+shell:
+{{- if eq .chezmoi.os "darwin" }}
+  program: {{ .homebrew_prefix }}/bin/zsh
+  args:
+    - -l
+    - -i
+{{- else }}
+  program: /usr/bin/zsh
+  args:
+    - -l
+{{- end }}
 
 # Startup directory
 #
