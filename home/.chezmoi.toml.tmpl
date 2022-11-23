@@ -1,0 +1,14 @@
+{{/* Discover the homebrew prefix */}}
+{{- $homebrew_prefix := "" -}}
+{{- if eq .chezmoi.os "darwin" -}}
+{{-   if stat "/opt/homebrew/bin/brew" -}}
+{{-     $homebrew_prefix = "/opt/homebrew" -}}
+{{-   else if stat "/usr/local/bin/brew" -}}
+{{-     $homebrew_prefix = "/usr/local" -}}
+{{-   end -}}
+{{- else -}}
+{{-   $homebrew_prefix = "/home/linuxbrew/" -}}
+{{- end -}}
+
+[data]
+    homebrew_prefix = {{ $homebrew_prefix | quote }}

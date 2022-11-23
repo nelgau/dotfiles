@@ -6,12 +6,8 @@ export SHELL_SESSION_FILE=$SHELL_SESSION_DIR/$TERM_SESSION_ID
 # Homebrew
 ##
 
-# Discover the prefix without brew
-{{ if stat "/opt/homebrew/bin/brew" -}}
-export HOMEBREW_PREFIX=/opt/homebrew
-{{ else if stat "/usr/local/bin/brew" -}}
-export HOMEBREW_PREFIX=/usr/local
-{{ end -}}
+# Use prefix discovered during chezmoi-apply
+export HOMEBREW_PREFIX={{ .homebrew_prefix }}
 
 # Activate shell environment
 export HOMEBREW_NO_ENV_HINTS=1
