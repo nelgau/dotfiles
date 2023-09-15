@@ -43,3 +43,9 @@ export LESSHISTFILE=$XDG_STATE_HOME/less/lesshst
 
 # We need to supply some terminfos missing from MacOS (e.g., tmux-256colors).
 export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
+
+##
+# Development
+#
+
+export IBOOT_G2_HOSTNAME=iboot-g2-a1c0
