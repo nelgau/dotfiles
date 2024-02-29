@@ -31,6 +31,8 @@ source "$CARGO_HOME/env"
 export PATH="$XDG_DATA_HOME/npm/bin:${PATH}"
 export PATH="$XDG_BIN_HOME:${PATH}"
 
+export PATH="$HOME/.docker/bin:${PATH}"
+
 # Avoid collisions between Homebrew and asdf-installed versions
 alias brew='env PATH="${PATH//.asdf/shims:/}" brew'
 
