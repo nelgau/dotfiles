@@ -51,9 +51,11 @@ set -eufo pipefail
      "zsh" -}}
 {{ $heads := list
      "nelgau/fpga/ecpprog"
-     "nelgau/fpga/nextpnr-ecp5"
+     "nelgau/fpga/nextpnr-ecp5" -}}
+{{- /*
      "riscv-software-src/riscv/riscv-tools"
      "yosys" -}}
+     */ -}}
 {{ $casks := list
      "1password"
      "1password-cli"
@@ -78,7 +80,6 @@ set -eufo pipefail
      "kicad"
      "musescore"
      "monitorcontrol"
-     "parallels"
      "rectangle"
      "slack"
      "spotify"
@@ -89,6 +90,9 @@ set -eufo pipefail
      "visual-studio-code"
      "vlc"
      "zoom" -}}
+{{- /*
+     "parallels"
+     */ -}}
 
 brew bundle --no-lock --file=/dev/stdin <<EOF
 {{ range ($taps | sortAlpha | uniq) -}}
