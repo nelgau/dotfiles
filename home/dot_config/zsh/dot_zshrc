@@ -21,13 +21,11 @@ fi
 # Build python with shared object support
 export PYTHON_CONFIGURE_OPTS="--enable-shared"
 
-# Activate the rust environment
-source "$CARGO_HOME/env"
-
 ##
 # Path
 #
 
+export PATH="$HOMEBREW_PREFIX/opt/rustup/bin:${PATH}"
 export PATH="$XDG_DATA_HOME/npm/bin:${PATH}"
 export PATH="$XDG_BIN_HOME:${PATH}"
 
