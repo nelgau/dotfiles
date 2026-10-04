@@ -48,4 +48,4 @@ export TERMINFO_DIRS=$TERMINFO_DIRS:$HOME/.local/share/terminfo
 # Development
 #
 
-export IBOOT_G2_HOSTNAME=iboot-g2-a1c0
+export IBOOT_N64=iboot-g2-a1c0
