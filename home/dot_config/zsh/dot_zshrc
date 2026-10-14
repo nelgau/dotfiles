@@ -97,6 +97,12 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 
 ##
+# Applications
+#
+
+export ARES="/Applications/ares.app/Contents/MacOS/ares"
+
+##
 # Aliases
 #
 
